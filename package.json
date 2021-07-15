@@ -27,11 +27,8 @@
     "extends": "@indivorg/eslint-config"
   },
   "devDependencies": {
-    "@kubernetes/client-node": "^0.15.0",
-    "@types/concurrently": "^6",
+    "@types/node": "^14",
     "@types/jest": "^26.0.24",
-    "concurrently": "^6.2.0",
-    "dotenv": "^10.0.0",
     "eslint": "^7.30.0",
     "jest": "^27.0.6",
     "lint-staged": "^11.0.0",
@@ -46,6 +43,7 @@
   },
   "dependencies": {
     "@indivorg/eslint-config": "^1.0.4",
+    "@kubernetes/client-node": "^0.15.0",
     "commander": "^8.0.0",
     "get-port": "^5.1.1",
     "rxjs-shell": "^3.0.7",
