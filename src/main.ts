@@ -7,7 +7,7 @@ import { portForward } from './port-forward';
 export interface RunnerArguments {
   namespace?: string;
   command?: string;
-  stdout?: (message: string | Buffer) => void;
+  logger?: (message: string | Buffer) => void;
 }
 
 /**
@@ -23,7 +23,7 @@ export interface RunnerArguments {
  * @returns a Map with all environment variables
  */
 export const runner = async (args: RunnerArguments = {}): Promise<Record<string, string>> => {
-  const { namespace = 'indiv-prod', stdout: log = process.stdout.write } = args;
+  const { namespace = 'indiv-prod', logger = console.log } = args;
 
   const kc = new k8s.KubeConfig();
   kc.loadFromDefault();
@@ -39,14 +39,14 @@ export const runner = async (args: RunnerArguments = {}): Promise<Record<string,
   for (const [key, uri] of Object.entries(data)) {
     const { service, port, path } = parseUri(uri);
     const res = await portForward(kc, service, namespace, port);
-    log(`${service}:${port} → 127.0.0.1:${res.port}\n`);
+    logger(`${service}:${port} → 127.0.0.1:${res.port}\n`);
     environment.set(
       key,
       path ? `localhost:${res.port}${path}` : `localhost:${res.port}`,
     );
   }
 
-  process.stdout.write('\nServices are running! 🚀\n\n');
+  logger('\nServices are running! 🚀\n\n');
 
   return Object.fromEntries(environment);
 };
