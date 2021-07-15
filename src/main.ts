@@ -10,7 +10,19 @@ export interface RunnerArguments {
   stdout?: (message: string | Buffer) => void;
 }
 
-export const runner = async (args: RunnerArguments = {}): Promise<void> => {
+/**
+ *
+ * Indiv Runner has a few simple responsibilities,
+ * 1) Get all the services from a well-known configMap
+ * 2) Parse the configMap (function is in parse-uri.ts)
+ * 3) Forward ports for the services (function is in port-forward.ts)
+ * 4) Create a Map with environment variables that can be
+ *    consumed by a local running app.
+ *
+ * @param args: RunnerArguments
+ * @returns a Map with all environment variables
+ */
+export const runner = async (args: RunnerArguments = {}): Promise<Record<string, string>> => {
   const { namespace = 'indiv-prod', stdout: log = process.stdout.write } = args;
 
   const kc = new k8s.KubeConfig();
@@ -35,4 +47,6 @@ export const runner = async (args: RunnerArguments = {}): Promise<void> => {
   }
 
   process.stdout.write('\nServices are running! 🚀\n\n');
+
+  return Object.fromEntries(environment);
 };

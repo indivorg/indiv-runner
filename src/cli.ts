@@ -18,11 +18,10 @@ const main = async () => {
     .parse(process.argv);
 
   const { command } = prog.opts();
-
-  await runner();
+  const env = await runner();
 
   if (command) {
-    exec(command).subscribe(({ stdout, stderr }) => {
+    exec(command, { env }).subscribe(({ stdout, stderr }) => {
       if (stderr) {
         process.stderr.write(stderr);
       }
