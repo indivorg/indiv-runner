@@ -4,7 +4,9 @@
   "repository": "git@github.com:indivorg/runner.git",
   "author": "Indiv AS",
   "license": "UNLICENSED",
-  "private": true,
+  "publishConfig": {
+    "access": "public"
+  },
   "engines": {
     "node": ">=14.15"
   },
