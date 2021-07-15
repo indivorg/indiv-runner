@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.1.0](https://www.github.com/indivorg/runner/compare/v1.0.1...v1.1.0) (2021-07-15)
+
+
+### Features
+
+* Add console messages (e.g. that services are running and which) ([1fc9c5e](https://www.github.com/indivorg/runner/commit/1fc9c5eb08aff8d75918da02c91ac8f184b902b5))
+* Add passing of environment variables ([fc75dbf](https://www.github.com/indivorg/runner/commit/fc75dbfffddfbd03fb6e5bdde5569445454b96c5))
+* improve export ([32e20de](https://www.github.com/indivorg/runner/commit/32e20ded62a38088b219a42a0e517397170782e9))
+
 ### [1.0.1](https://www.github.com/indivorg/runner/compare/v1.0.0...v1.0.1) (2021-07-15)
 
 
