@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://www.github.com/indivorg/runner/compare/v1.1.0...v1.2.0) (2021-07-15)
+
+
+### Features
+
+* Improved logger interface ([5fc9548](https://www.github.com/indivorg/runner/commit/5fc9548610bc02480b8d058510e7069c6c80fde3))
+
 ## [1.1.0](https://www.github.com/indivorg/runner/compare/v1.0.1...v1.1.0) (2021-07-15)
 
 
