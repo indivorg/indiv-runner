@@ -1,0 +1,52 @@
+{
+  "name": "@indivorg/runner",
+  "version": "1.0.0",
+  "repository": "git@github.com:indivorg/runner.git",
+  "author": "Indiv AS",
+  "license": "UNLICENSED",
+  "private": true,
+  "engines": {
+    "node": ">=14.15"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "dist/main.js",
+  "bin": {
+    "indiv-runner": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node src/main.ts",
+    "test": "jest --coverage src/**/*",
+    "lint": "eslint ."
+  },
+  "eslintConfig": {
+    "extends": "@indivorg/eslint-config"
+  },
+  "devDependencies": {
+    "@kubernetes/client-node": "^0.15.0",
+    "@types/concurrently": "^6",
+    "@types/jest": "^26.0.24",
+    "concurrently": "^6.2.0",
+    "dotenv": "^10.0.0",
+    "eslint": "^7.30.0",
+    "jest": "^27.0.6",
+    "lint-staged": "^11.0.0",
+    "prettier": "^2.3.2",
+    "ts-jest": "^27.0.3",
+    "ts-node": "^10.1.0",
+    "typescript": "^4.3.5"
+  },
+  "volta": {
+    "node": "14.15.0",
+    "yarn": "1.22.10"
+  },
+  "dependencies": {
+    "@indivorg/eslint-config": "^1.0.4",
+    "commander": "^8.0.0",
+    "get-port": "^5.1.1",
+    "rxjs-shell": "^3.0.7",
+    "ts-invariant": "^0.9.0"
+  }
+}
