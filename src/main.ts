@@ -1,17 +1,18 @@
 /* eslint no-console: off */
 import * as k8s from '@kubernetes/client-node';
-import { exec } from 'rxjs-shell';
 import invariant from 'ts-invariant';
 import { parseUri } from './parse-uri';
 import { portForward } from './port-forward';
 
-export interface BootstrapArguments {
+export interface RunnerArguments {
   namespace?: string;
   command?: string;
+  stdout?: (message: string | Buffer) => void;
 }
 
-export const bootstrap = async (args: BootstrapArguments): Promise<void> => {
-  const { namespace = 'indiv-prod', command } = args;
+export const runner = async (args: RunnerArguments = {}): Promise<void> => {
+  const { namespace = 'indiv-prod', stdout: log = process.stdout.write } = args;
+
   const kc = new k8s.KubeConfig();
   kc.loadFromDefault();
   const core = kc.makeApiClient(k8s.CoreV1Api);
@@ -26,7 +27,7 @@ export const bootstrap = async (args: BootstrapArguments): Promise<void> => {
   for (const [key, uri] of Object.entries(data)) {
     const { service, port, path } = parseUri(uri);
     const res = await portForward(kc, service, namespace, port);
-    process.stdout.write(`${service}:${port} → 127.0.0.1:${res.port}\n`);
+    log(`${service}:${port} → 127.0.0.1:${res.port}\n`);
     environment.set(
       key,
       path ? `localhost:${res.port}${path}` : `localhost:${res.port}`,
@@ -34,13 +35,4 @@ export const bootstrap = async (args: BootstrapArguments): Promise<void> => {
   }
 
   process.stdout.write('\nServices are running! 🚀\n\n');
-
-  if (command) {
-    exec(command).subscribe(({ stdout, stderr }) => {
-      if (stderr) {
-        process.stderr.write(stderr);
-      }
-      process.stdout.write(stdout);
-    });
-  }
 };

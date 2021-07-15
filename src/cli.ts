@@ -2,7 +2,8 @@
 /* eslint no-console:off */
 
 import { program } from 'commander';
-import { bootstrap } from './main';
+import { exec } from 'rxjs-shell';
+import { runner } from './main';
 
 const main = async () => {
   const prog = program
@@ -18,9 +19,16 @@ const main = async () => {
 
   const { command } = prog.opts();
 
-  await bootstrap({
-    command,
-  });
+  await runner();
+
+  if (command) {
+    exec(command).subscribe(({ stdout, stderr }) => {
+      if (stderr) {
+        process.stderr.write(stderr);
+      }
+      process.stdout.write(stdout);
+    });
+  }
 };
 
 main().catch(console.error);
