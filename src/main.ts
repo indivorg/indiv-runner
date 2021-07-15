@@ -26,11 +26,14 @@ export const bootstrap = async (args: BootstrapArguments): Promise<void> => {
   for (const [key, uri] of Object.entries(data)) {
     const { service, port, path } = parseUri(uri);
     const res = await portForward(kc, service, namespace, port);
+    process.stdout.write(`${service}:${port} → 127.0.0.1:${res.port}\n`);
     environment.set(
       key,
       path ? `localhost:${res.port}${path}` : `localhost:${res.port}`,
     );
   }
+
+  process.stdout.write('\nServices are running! 🚀\n\n');
 
   if (command) {
     exec(command).subscribe(({ stdout, stderr }) => {
