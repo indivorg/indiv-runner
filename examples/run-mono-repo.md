@@ -1,13 +1,11 @@
 # Running Indiv Runner on a mono repository
 
-For this task, I've chosen [concurrently][] to help with running more than one
-package.
-
 First, let's create a separate script which we are going to run later. Let's
 just call it `run-server.ts` for now.
 
 In this file, we need to setup our packages. Let's imagine we have two packages,
-`backend` and `web`. Let's set these services up with `concurrently`.
+`backend` and `web`. Let's set these services up with
+[`concurrently`](https://www.npmjs.com/package/concurrently).
 
 ```typescript
 import concurrenctly from 'concurrently';
