@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://www.github.com/indivorg/runner/compare/v1.2.0...v1.3.0) (2021-07-16)
+
+
+### Features
+
+* support node 12 ([602ebb1](https://www.github.com/indivorg/runner/commit/602ebb157aa46ae285b307de071d456318d3e793))
+
 ## [1.2.0](https://www.github.com/indivorg/runner/compare/v1.1.0...v1.2.0) (2021-07-15)
 
 
