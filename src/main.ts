@@ -39,14 +39,14 @@ export const runner = async (args: RunnerArguments = {}): Promise<Record<string,
   for (const [key, uri] of Object.entries(data)) {
     const { service, port, path } = parseUri(uri);
     const res = await portForward(kc, service, namespace, port);
-    logger(`${service}:${port} → 127.0.0.1:${res.port}\n`);
+    logger(`${service}:${port} → 127.0.0.1:${res.port}`);
     environment.set(
       key,
       path ? `localhost:${res.port}${path}` : `localhost:${res.port}`,
     );
   }
 
-  logger('\nServices are running! 🚀\n\n');
+  logger('\nServices are running! 🚀\n');
 
   return Object.fromEntries(environment);
 };
