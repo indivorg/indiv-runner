@@ -1,5 +1,21 @@
 # Changelog
 
+## [2.0.0](https://www.github.com/indivorg/runner/compare/v1.3.0...v2.0.0) (2021-07-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* Dropping support for `logger`. Only supporting ORA for outputs.
+
+### Features
+
+* Pretty output with ora ([4e4030d](https://www.github.com/indivorg/runner/commit/4e4030d83655b265c70853501ef4e2ccb7e487c9))
+
+
+### Bug Fixes
+
+* commands not running ([e6113f4](https://www.github.com/indivorg/runner/commit/e6113f4329f56278a898a04e89a8ccee54a59da1))
+
 ## [1.3.0](https://www.github.com/indivorg/runner/compare/v1.2.0...v1.3.0) (2021-07-16)
 
 
