@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /* eslint no-console:off */
 
+import { exec } from 'child_process';
 import { program } from 'commander';
-import { exec } from 'rxjs-shell';
 import { runner } from './main';
 
 const main = async () => {
@@ -21,11 +21,15 @@ const main = async () => {
   const env = await runner();
 
   if (command) {
-    exec(command, { env }).subscribe(({ stdout, stderr }) => {
-      if (stderr) {
-        process.stderr.write(stderr);
-      }
-      process.stdout.write(stdout);
+    console.log(`Running command: ${command}\n`)
+    const cmd = exec(command, { env: { ...env, ...process.env } });
+
+    cmd.stdout.on('data', d => process.stdout.write(d));
+    cmd.stderr.on('data', d => process.stderr.write(d));
+
+    cmd.on('exit', code => {
+      console.log('child process exited with code ' + code.toString());
+      process.exit(code);
     });
   }
 };
