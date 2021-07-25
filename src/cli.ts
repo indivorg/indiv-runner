@@ -21,13 +21,13 @@ const main = async () => {
   const env = await runner();
 
   if (command) {
-    console.log(`Running command: ${command}\n`)
+    console.log(`Running command: ${command}\n`);
     const cmd = exec(command, { env: { ...env, ...process.env } });
 
-    cmd.stdout.on('data', d => process.stdout.write(d));
-    cmd.stderr.on('data', d => process.stderr.write(d));
+    cmd.stdout.on('data', (d) => process.stdout.write(d));
+    cmd.stderr.on('data', (d) => process.stderr.write(d));
 
-    cmd.on('exit', code => {
+    cmd.on('exit', (code) => {
       console.log('child process exited with code ' + code.toString());
       process.exit(code);
     });

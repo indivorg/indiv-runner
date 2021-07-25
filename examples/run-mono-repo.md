@@ -67,7 +67,7 @@ import { runner } from '@indivorg/runner';
 const main = async () => {
   const environment = await runner({
     namespace: 'my-app-namespace',
-    stdout: message => console.log(message),
+    stdout: (message) => console.log(message),
   });
 
   concurrenctly([

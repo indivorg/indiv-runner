@@ -21,7 +21,7 @@ export const portForward = async (
     body.spec?.ports?.length === 1
       ? body.spec.ports[0]
       : body.spec?.ports?.find(
-          port => port.name === 'http' || port.port === servicePort,
+          (port) => port.name === 'http' || port.port === servicePort,
         );
   invariant(portConfig, 'a known port config was not found');
 
@@ -40,14 +40,14 @@ export const portForward = async (
     '',
     labelSelector,
   );
-  const pod = pods.body.items.find(p => p?.status?.phase !== 'Failed');
+  const pod = pods.body.items.find((p) => p?.status?.phase !== 'Failed');
   const podName = pod?.metadata?.name;
 
   invariant(podName, 'no pod found');
   const exposePort = await getPort();
 
   const forward = new k8s.PortForward(kc);
-  const server = net.createServer(socket => {
+  const server = net.createServer((socket) => {
     forward.portForward(
       namespace,
       podName,
