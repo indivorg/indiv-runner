@@ -1,5 +1,6 @@
 /* eslint no-console: off */
 import * as k8s from '@kubernetes/client-node';
+import ora = require('ora');
 import invariant from 'ts-invariant';
 import { parseUri } from './parse-uri';
 import { portForward } from './port-forward';
@@ -7,7 +8,6 @@ import { portForward } from './port-forward';
 export interface RunnerArguments {
   namespace?: string;
   command?: string;
-  logger?: (message: string | Buffer) => void;
 }
 
 /**
@@ -22,8 +22,10 @@ export interface RunnerArguments {
  * @param args: RunnerArguments
  * @returns a Map with all environment variables
  */
-export const runner = async (args: RunnerArguments = {}): Promise<Record<string, string>> => {
-  const { namespace = 'indiv-prod', logger = console.log } = args;
+export const runner = async (
+  args: RunnerArguments = {},
+): Promise<Record<string, string>> => {
+  const { namespace = 'indiv-prod' } = args;
 
   const kc = new k8s.KubeConfig();
   kc.loadFromDefault();
@@ -36,17 +38,21 @@ export const runner = async (args: RunnerArguments = {}): Promise<Record<string,
 
   const environment = new Map();
 
-  for (const [key, uri] of Object.entries(data)) {
-    const { service, port, path } = parseUri(uri);
-    const res = await portForward(kc, service, namespace, port);
-    logger(`${service}:${port} → 127.0.0.1:${res.port}\n`);
-    environment.set(
-      key,
-      path ? `localhost:${res.port}${path}` : `localhost:${res.port}`,
-    );
-  }
+  const spinner = ora('Loading port-forwards').start();
 
-  logger('\nServices are running! 🚀\n\n');
+  await Promise.all(
+    Object.entries(data).map(async ([key, uri]) => {
+      const { service, port, path } = parseUri(uri);
+      const res = await portForward(kc, service, namespace, port);
+      spinner.text = `${service}:${port} → 127.0.0.1:${res.port}`;
+      environment.set(
+        key,
+        path ? `localhost:${res.port}${path}` : `localhost:${res.port}`,
+      );
+    }),
+  );
+
+  spinner.succeed('Service forwarding successful! 🚀');
 
   return Object.fromEntries(environment);
 };
