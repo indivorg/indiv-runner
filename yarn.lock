@@ -347,15 +347,16 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.0.tgz#87de7af9c231826fdd68ac7258f77c429e0e5fcf"
   integrity sha512-wdppn25U8z/2yiaT6YGquE6X8sSv7hNMWSXYSSU1jGv/yd6XqjXgTDJ8KP4NgjTXfJ3GbRjeeb8RTV7a/VpM+w==
 
-"@indivorg/eslint-config@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@indivorg/eslint-config/-/eslint-config-1.0.4.tgz#6a0b16878edb68ece06f480cecf3bf77d4b7b1f1"
-  integrity sha512-Gw//mFIicGhHyQJTh12fLxNupAd0OuqVSivReJ3AFQdhYApyb0xEW2cA177FNRc0tclzscact7jfe06VGrstRQ==
+"@indivorg/eslint-config@^2":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@indivorg/eslint-config/-/eslint-config-2.0.0.tgz#7cb63ebb146a185d70050f49e7ffe5328a5d80f4"
+  integrity sha512-uR+uHy9zZdwMf+vq2ctjdfsjmlpYqqsBHZSC9QWFVYEX5MH6hu9GPnnDOW+qJcSnVXdayNV5dWlTm/b//+jgBA==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^4.28.2"
     "@typescript-eslint/parser" "^4.28.2"
     eslint "^7.30.0"
     eslint-config-prettier "^8.3.0"
+    eslint-plugin-eslint-comments "^3.2.0"
     eslint-plugin-import "^2.23.4"
     eslint-plugin-jest "^24.3.6"
     eslint-plugin-prettier "^3.4.0"
@@ -1802,6 +1803,14 @@ eslint-module-utils@^2.6.1:
     debug "^3.2.7"
     pkg-dir "^2.0.0"
 
+eslint-plugin-eslint-comments@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-eslint-comments/-/eslint-plugin-eslint-comments-3.2.0.tgz#9e1cd7b4413526abb313933071d7aba05ca12ffa"
+  integrity sha512-0jkOl0hfojIHHmEHgmNdqv4fmh7300NdpA9FFpF7zaoLvB/QeXOGNLIo86oAveJFrfB1p05kC8hpEMHM8DwWVQ==
+  dependencies:
+    escape-string-regexp "^1.0.5"
+    ignore "^5.0.5"
+
 eslint-plugin-import@^2.23.4:
   version "2.23.4"
   resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.23.4.tgz#8dceb1ed6b73e46e50ec9a5bb2411b645e7d3d97"
@@ -2436,7 +2445,7 @@ ignore@^4.0.6:
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-4.0.6.tgz#750e3db5862087b4737ebac8207ffd1ef27b25fc"
   integrity sha512-cyFDKrqc/YdcWFniJhzI42+AzS+gNwmUzOSFcRCQYwySuBBBy/KjuxWLZ/FHEH6Moq1NizMOBWyTcv8O4OZIMg==
 
-ignore@^5.1.4:
+ignore@^5.0.5, ignore@^5.1.4:
   version "5.1.8"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.1.8.tgz#f150a8b50a34289b33e22f5889abd4d8016f0e57"
   integrity sha512-BMpfD7PpiETpBl/A6S498BaIJ6Y/ABT93ETbby2fP00v4EbvPBXWEoaR1UBPKs3iR53pJY7EtZk5KACI57i1Uw==
