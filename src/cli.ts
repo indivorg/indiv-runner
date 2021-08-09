@@ -15,6 +15,12 @@ const main = async () => {
       '-r, --command <command>',
       'a command to run after runner has started e.g. yarn run dev',
     )
+    .option('-n, --namespace <namespace>', 'namespace to run', 'indiv-prod')
+    .option(
+      '--config-map <name>',
+      'which configmap to look for services',
+      'service-env-config',
+    )
     .parse(process.argv);
 
   const { command } = prog.opts();
