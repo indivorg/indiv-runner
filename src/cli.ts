@@ -23,8 +23,8 @@ const main = async () => {
     )
     .parse(process.argv);
 
-  const { command } = prog.opts();
-  const env = await runner();
+  const { command, namespace, configMap } = prog.opts();
+  const env = await runner({ namespace, configMap });
 
   if (command) {
     console.log(`Running command: ${command}\n`);

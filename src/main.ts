@@ -7,6 +7,7 @@ import { portForward } from './port-forward';
 
 export interface RunnerArguments {
   namespace?: string;
+  configMap?: string;
   command?: string;
 }
 
@@ -25,7 +26,7 @@ export interface RunnerArguments {
 export const runner = async (
   args: RunnerArguments = {},
 ): Promise<Record<string, string>> => {
-  const { namespace } = args;
+  const { namespace, configMap } = args;
 
   const kc = new k8s.KubeConfig();
   kc.loadFromDefault();
@@ -33,7 +34,7 @@ export const runner = async (
 
   const {
     body: { data },
-  } = await core.readNamespacedConfigMap('service-env-config', namespace);
+  } = await core.readNamespacedConfigMap(configMap, namespace);
   invariant(data, 'service-env-config was not found');
 
   const environment = new Map();
