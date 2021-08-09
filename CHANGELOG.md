@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.0](https://www.github.com/indivorg/runner/compare/v2.1.1...v2.2.0) (2021-08-09)
+
+
+### Features
+
+* add http:// prefix to services with path ([0ce7940](https://www.github.com/indivorg/runner/commit/0ce7940b0522cb17ef5f3c37efb48f4997c397b7))
+
 ### [2.1.1](https://www.github.com/indivorg/runner/compare/v2.1.0...v2.1.1) (2021-08-09)
 
 
