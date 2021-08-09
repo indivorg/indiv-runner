@@ -21,7 +21,6 @@
     "extends": "@indivorg/eslint-config"
   },
   "dependencies": {
-    "@indivorg/eslint-config": "^1.0.4",
     "@kubernetes/client-node": "^0.15.0",
     "commander": "^8.0.0",
     "get-port": "^5.1.1",
