@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://www.github.com/indivorg/runner/compare/v2.0.0...v2.1.0) (2021-08-09)
+
+
+### Features
+
+* Add flags `--namespace` and `--config-map` ([c80ca88](https://www.github.com/indivorg/runner/commit/c80ca884374d59b70d90f3cb7fb826de6644b8b9))
+
 ## [2.0.0](https://www.github.com/indivorg/runner/compare/v1.3.0...v2.0.0) (2021-07-25)
 
 ### ⚠ BREAKING CHANGES
