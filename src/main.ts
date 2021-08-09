@@ -48,7 +48,7 @@ export const runner = async (
       spinner.text = `${service}:${port} → 127.0.0.1:${res.port}`;
       environment.set(
         key,
-        path ? `localhost:${res.port}${path}` : `localhost:${res.port}`,
+        path ? `http://localhost:${res.port}${path}` : `localhost:${res.port}`,
       );
     }),
   );
