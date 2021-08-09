@@ -25,7 +25,7 @@ export interface RunnerArguments {
 export const runner = async (
   args: RunnerArguments = {},
 ): Promise<Record<string, string>> => {
-  const { namespace = 'indiv-prod' } = args;
+  const { namespace } = args;
 
   const kc = new k8s.KubeConfig();
   kc.loadFromDefault();
