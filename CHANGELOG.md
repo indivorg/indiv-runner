@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.1.1](https://www.github.com/indivorg/runner/compare/v2.1.0...v2.1.1) (2021-08-09)
+
+
+### Bug Fixes
+
+* problems after last change ([ad5b3a4](https://www.github.com/indivorg/runner/commit/ad5b3a420d34c6e8fc329f72dbdd5375e2e4ae57))
+
 ## [2.1.0](https://www.github.com/indivorg/runner/compare/v2.0.0...v2.1.0) (2021-08-09)
 
 
