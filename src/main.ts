@@ -55,7 +55,7 @@ export const runner = async (
         );
       } catch (error: unknown) {
         if (error instanceof Error) {
-          console.log(error.message);
+          console.log(`${service}:${port} failed with: ${error.message}\n`);
         }
 
         spinner.text = `⚠️ Failed connecting to ${service}:${port}`;
