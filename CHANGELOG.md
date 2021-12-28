@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.2.1](https://www.github.com/indivorg/runner/compare/v2.2.0...v2.2.1) (2021-12-28)
+
+
+### Bug Fixes
+
+* Blocking behavior when services aren't up ([#21](https://www.github.com/indivorg/runner/issues/21)) ([c5d0c21](https://www.github.com/indivorg/runner/commit/c5d0c21a042906a9bd5e5c9f8984d9da802c5739))
+
 ## [2.2.0](https://www.github.com/indivorg/runner/compare/v2.1.1...v2.2.0) (2021-08-09)
 
 
