@@ -44,12 +44,22 @@ export const runner = async (
   await Promise.all(
     Object.entries(data).map(async ([key, uri]) => {
       const { service, port, path } = parseUri(uri);
-      const res = await portForward(kc, service, namespace, port);
-      spinner.text = `${service}:${port} → 127.0.0.1:${res.port}`;
-      environment.set(
-        key,
-        path ? `http://localhost:${res.port}${path}` : `localhost:${res.port}`,
-      );
+      try {
+        const res = await portForward(kc, service, namespace, port);
+        spinner.text = `${service}:${port} → 127.0.0.1:${res.port}`;
+        environment.set(
+          key,
+          path
+            ? `http://localhost:${res.port}${path}`
+            : `localhost:${res.port}`,
+        );
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          console.log(`${service}:${port} failed with: ${error.message}\n`);
+        }
+
+        spinner.text = `⚠️ Failed connecting to ${service}:${port}`;
+      }
     }),
   );
 
